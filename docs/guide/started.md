@@ -8,7 +8,7 @@
 npm  i -g degit
 
 # clone starter
-degit windlil/lc-plus [your project name]
+degit Luochao0511/lc-plus [your project name]
 
 # switch to your project directory
 cd [your project name]
