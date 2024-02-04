@@ -1,0 +1,42 @@
+node_modules
+/dist
+
+
+# # local env files
+.env.local
+.env.*.local
+.env.*
+
+# # Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# # 忽略目录
+docs/
+config/
+.github/
+.vscode/
+README_GIF/
+playground/
+# 忽略指定文件
+auto-imports.d.ts
+babel.config.js
+.browserslistrc
+.eslintrc.js
+.prettierignore
+.prettierrc.js
+.eslintignore
+tsconfig.json
+deploy.sh
+*.map
+# Editor directories and files
+.idea
+.gitee
+.git
+*.suo
+*.zip
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

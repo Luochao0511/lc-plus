@@ -1,0 +1,149 @@
+/**
+ ag-grid Table 样式重构
+ */
+
+@mixin ag-scroll() {
+  cursor: pointer;
+  width: 6px !important;
+  max-width: 6px !important;
+  min-width: 6px !important;
+}
+
+@mixin ag-horizontal-scroll() {
+  cursor: pointer;
+  height: 10px !important;
+  max-height: 10px !important;
+  min-height: 10px !important;
+}
+
+.ag-theme-material {
+  &[fix-theme] {
+    .ag-cell-focus:not(.ag-cell-range-selected):focus-within {
+      outline: none;
+      border: 1px solid transparent;
+    }
+
+    //去除商标
+    .ag-watermark {
+      opacity: 0;
+    }
+
+    &.borders {
+      --ag-borders: solid 1px; //禁用边框设置none
+      --ag-row-border-style: solid;
+      --ag-row-border-width: 1px;
+      --ag-row-border-color: #ebeef5;
+    }
+
+    &.cellBorders {
+      .ag-cell, .ag-header-cell {
+        border-right: var(--ag-row-border-width) var(--ag-row-border-style) var(--ag-row-border-color);
+      }
+    }
+
+    .cell-text-wrap {
+      white-space: pre-line;
+      word-break: break-all;
+      line-height: 0.8;
+    }
+
+    --ag-icon-size: 16px;
+    --ag-material-accent-color: #2196f3;
+
+    .ag-layout-normal {
+      .ag-body-vertical-scroll {
+        @include ag-scroll();
+        opacity: 0;
+        transition: all .2s ease-in-out;
+
+        .ag-body-vertical-scroll-viewport {
+          @include ag-scroll();
+
+          .ag-body-vertical-scroll-container {
+            @include ag-scroll();
+          }
+        }
+      }
+
+      .ag-body-horizontal-scroll {
+        opacity: 0;
+        transition: all .2s ease-in-out;
+        @include ag-horizontal-scroll();
+
+        .ag-body-horizontal-scroll-viewport {
+          @include ag-horizontal-scroll();
+
+          .ag-body-horizontal-scroll-container {
+            @include ag-horizontal-scroll();
+          }
+        }
+      }
+
+      &:hover {
+        .ag-body-vertical-scroll, .ag-body-horizontal-scroll {
+          opacity: 1;
+        }
+      }
+    }
+
+    .ag-cell, .ag-header-cell {
+      padding: 0 5px;
+    }
+
+    .ag-filter {
+      .ag-virtual-list-container {
+
+        .ag-filter-virtual-list-item {
+          .ag-set-filter-item {
+            margin-right: 0;
+
+            .ag-set-filter-item-checkbox {
+              width: 100%;
+
+              .ag-checkbox {
+                align-items: center;
+              }
+
+              &:hover {
+                background-color: #ebebeb;
+                cursor: pointer;
+              }
+
+              .ag-label {
+                width: calc(100% - 16px);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ag-header {
+      background: #cdebf9;
+
+      .ag-icon-menu {
+        margin-left: 10px;
+      }
+
+      .ag-cell-label-container {
+        justify-content: start;
+      }
+
+      .ag-header-group-cell-label, .ag-header-cell-label {
+        flex: inherit;
+      }
+
+      .ag-header-cell-text {
+        font-weight: 700;
+
+        &:hover {
+          text-decoration-line: underline;
+        }
+      }
+
+      .ag-icon-filter {
+        color: #ff6;
+      }
+    }
+  }
+}
