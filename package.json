@@ -1,6 +1,6 @@
 {
   "name": "lc-plus",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "luochao<506398736@qq.com>",
   "description": "搭建vue3组件库集成公共组件和公共api，方便使用者快速开发成熟的组件",
   "keywords": [
@@ -12,7 +12,16 @@
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
   "types": "dist/lib/index.d.ts",
-  "exports": {},
+  "exports": {
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/lib/index.js"
+    },
+    "./dist/lib/index.js": "./dist/lib/index.js",
+    "./dist/es/index.js": "./dist/es/index.js",
+    "./dist/lib/index.d.ts": "./dist/lib/index.d.ts",
+    "./index.css": "./dist/es/style.css"
+  },
   "scripts": {
     "build": "gulp -f packages/script/build/index.ts",
     "component:create": "esno ./utils/create/index.ts",
