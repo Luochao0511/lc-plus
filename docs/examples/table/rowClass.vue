@@ -1,3 +1,14 @@
+<template>
+  <div>
+    <lc-table
+      :height="550"
+      :columns="columns"
+      :tableData="tableData"
+      :rowClassRules="rowClassRules"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { LcTable } from 'lc-plus'
 import { INDEX_COLUMNS } from 'lc-plus/constants/base.js' //从组件库暴露的常量
@@ -40,23 +51,12 @@ const rowClassRules = {
   // row style function
   'sick-days-warning': (params) => {
     const numSickDays = params.data.age
-    return  numSickDays >= 20
+    return numSickDays >= 20
   },
   // row style expression
   'sick-days-breach': 'data.age <= 5'
 }
 </script>
-
-<template>
-  <div>
-    <lc-table
-      :height="550"
-      :columns="columns"
-      :tableData="tableData"
-      :rowClassRules="rowClassRules"
-    />
-  </div>
-</template>
 
 <style scoped lang="scss">
 :deep(.sick-days-warning ) {

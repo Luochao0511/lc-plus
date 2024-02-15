@@ -1,3 +1,9 @@
+<template>
+  <div>
+    <lc-table :height="550" :columns="columns" :tableData="tableData" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { LcTable } from 'lc-plus'
 import { INDEX_COLUMNS } from 'lc-plus/constants/base.js' //从组件库暴露的常量
@@ -39,11 +45,7 @@ const tableData = [
 
 </script>
 
-<template>
-  <div>
-    <lc-table :height="550" :columns="columns" :tableData="tableData" />
-  </div>
-</template>
+
 
 <style scoped lang="scss">
 

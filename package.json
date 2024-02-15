@@ -1,6 +1,6 @@
 {
   "name": "lc-plus",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "luochao<506398736@qq.com>",
   "description": "搭建vue3组件库集成公共组件和公共api，方便使用者快速开发成熟的组件",
   "keywords": [
