@@ -31,7 +31,9 @@
     "comp:new": "esno ./utils/createTestVue/index.ts",
     "docs:dev": "vitepress dev docs --port 8000 --open",
     "docs:new": "esno ./utils/createVitepressComp/index.ts",
-    "docs:build": "vitepress build docs"
+    "docs:build": "vitepress build docs",
+    "release": "release-it",
+    "publish:lc-plus": "gulp -f packages/script/publish/index.ts"
   },
   "files": [
     "dist",
@@ -81,6 +83,7 @@
     "markdown-it-container": "^4.0.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.29.0",
+    "release-it": "^17.0.5",
     "sass": "^1.69.4",
     "sucrase": "^3.34.0",
     "typescript": "^5.2.2",
