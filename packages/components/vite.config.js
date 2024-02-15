@@ -37,7 +37,7 @@ export default defineConfig({
         }
         // 开启umd打包模式
         // {
-        //   name: 'vuecomp',
+        //   name: 'lc-plus',
         //   exports: 'named',
         //   format: 'umd',
         //   dir: '../../dist/umd',
@@ -47,7 +47,7 @@ export default defineConfig({
     },
     lib: {
       entry: 'src/index.ts',
-      name: 'vuecomp',
+      name: 'lc-plus',
       formats: ['es', 'cjs', 'umd']
     }
   },

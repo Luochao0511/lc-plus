@@ -35,6 +35,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^5.40.0
         version: 5.62.0(eslint@8.56.0)(typescript@5.2.2)
+      '@vue/runtime-core':
+        specifier: ^3.4.15
+        version: 3.4.15
       '@vue/shared':
         specifier: ^3.3.13
         version: 3.4.15
@@ -92,6 +95,9 @@ importers:
       gulp-sass:
         specifier: ^5.1.0
         version: 5.1.0
+      lc-plus:
+        specifier: workspace:^
+        version: 'link:'
       less:
         specifier: ^4.2.0
         version: 4.2.0
@@ -143,6 +149,9 @@ importers:
 
   playground/vue-vite-playground:
     dependencies:
+      '@wocwin/t-ui-plus':
+        specifier: ^1.2.9
+        version: 1.2.9
       lc-plus:
         specifier: workspace:^
         version: link:../..
@@ -1266,6 +1275,12 @@ packages:
     dependencies:
       '@vue/shared': 3.3.7
 
+  /@vue/reactivity@3.4.15:
+    resolution: {integrity: sha512-55yJh2bsff20K5O84MxSvXKPHHt17I2EomHznvFiJCAZpJTNW8IuLj1xZWMLELRhBK3kkFV/1ErZGHJfah7i7w==}
+    dependencies:
+      '@vue/shared': 3.4.15
+    dev: true
+
   /@vue/runtime-core@3.3.4:
     resolution: {integrity: sha512-R+bqxMN6pWO7zGI4OMlmvePOdP2c93GsHFM/siJI7O2nxFRzj55pLwkpCedEY+bTMgp5miZ8CxfIZo3S+gFqvA==}
     dependencies:
@@ -1278,6 +1293,13 @@ packages:
     dependencies:
       '@vue/reactivity': 3.3.7
       '@vue/shared': 3.3.7
+
+  /@vue/runtime-core@3.4.15:
+    resolution: {integrity: sha512-6E3by5m6v1AkW0McCeAyhHTw+3y17YCOKG0U0HDKDscV4Hs0kgNT5G+GCHak16jKgcCDHpI9xe5NKb8sdLCLdw==}
+    dependencies:
+      '@vue/reactivity': 3.4.15
+      '@vue/shared': 3.4.15
+    dev: true
 
   /@vue/runtime-dom@3.3.4:
     resolution: {integrity: sha512-Aj5bTJ3u5sFsUckRghsNjVTtxZQ1OyMWCr5dZRAPijF/0Vy4xEoRCwLyHXcj4D0UFbJ4lbx3gPTgg06K/GnPnQ==}
@@ -1478,6 +1500,10 @@ packages:
       - '@vue/composition-api'
       - vue
     dev: true
+
+  /@wocwin/t-ui-plus@1.2.9:
+    resolution: {integrity: sha512-A+c0K2K1LbGToe4SUYI+ke5KEelGB7awh4sgwfn3UpNzKt1fjWxGt/7SSbmYdGl/p58s/JAR6XhohoONpCDZ1g==}
+    dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.3):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}

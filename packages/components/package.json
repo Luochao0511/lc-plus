@@ -1,5 +1,5 @@
 {
-  "name": "@windlil-design/components",
+  "name": "@lc-plus/components",
   "type": "module",
   "scripts": {
     "build": "vite build"

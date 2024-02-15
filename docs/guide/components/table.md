@@ -34,7 +34,7 @@ table/base
 | cellBorders  | 是否添加单元格边框线                        | boolean                 | false      |
 | excelStyles  | 表格导出合并样式                          | Array                   | -          |
 
-## 3、events 其他事件按照 el-table 直接使用（如 sort-change 排序事件）
+## 3、events 其他事件按照 el-table 
 
 | 事件名                | 说明      | 返回值       |
 |:-------------------|:--------|:----------|

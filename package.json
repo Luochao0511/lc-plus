@@ -1,6 +1,6 @@
 {
   "name": "lc-plus",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "author": "luochao<506398736@qq.com>",
   "description": "搭建vue3组件库集成公共组件和公共api，方便使用者快速开发成熟的组件",
   "keywords": [
@@ -33,7 +33,10 @@
     "docs:build": "vitepress build docs"
   },
   "files": [
-    "dist"
+    "dist",
+    "global.d.ts",
+    "LICENSE",
+    "README.md"
   ],
   "repository": {
     "type": "git",
@@ -51,6 +54,7 @@
     "@types/node": "^20.8.7",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
+    "@vue/runtime-core": "^3.4.15",
     "@vue/shared": "^3.3.13",
     "@vueuse/core": "^10.7.2",
     "ag-grid-community": "^31.0.3",
@@ -70,6 +74,7 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-less": "^5.0.0",
     "gulp-sass": "^5.1.0",
+    "lc-plus": "workspace:^",
     "less": "^4.2.0",
     "markdown-it": "^14.0.0",
     "markdown-it-container": "^4.0.0",

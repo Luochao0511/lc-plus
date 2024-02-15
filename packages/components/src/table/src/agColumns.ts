@@ -6,14 +6,7 @@
  * @date 2024-2-2
  */
 import { AG_GRID_LOCALE_ZH } from './agLocaleText.ts'
-import {
-  ColumnMenuTab,
-  ExcelStyle,
-  GridOptions,
-  SideBarDef,
-  ValueGetterParams,
-} from 'ag-grid-enterprise'
-import { ColumnPinnedType } from 'ag-grid-community/dist/lib/entities/column'
+import { ExcelStyle, GridOptions, SideBarDef } from 'ag-grid-enterprise'
 
 // 表格默认配置
 export const GRID_OPTIONS: GridOptions = {
@@ -28,7 +21,6 @@ export const GRID_OPTIONS: GridOptions = {
   rowBuffer: 10, // 行缓冲区，默认为10行
   animateRows: true, // 开启行动画
   rowSelection: 'multiple', // 行多选
-  cacheBlockSize: 100, // 缓存中的每个块应该包含多少行
   suppressRowClickSelection: true, // 点击及选择复选框
   tooltipShowDelay: 100, // 鼠标触摸提示出现时间100毫秒
   groupSelectsChildren: true, // 选中子级
@@ -43,7 +35,7 @@ export const GRID_OPTIONS: GridOptions = {
       buttons: ['apply', 'reset'], // 过滤器按钮
       closeOnApply: true, // 按住apply reset按钮关闭
       excelMode: 'windows', // 转换为widows模式
-      showTooltips: true, // 设置过滤器工具提示
+      showTooltips: true // 设置过滤器工具提示
     },
     headerTooltip: '点击旁边按钮进行筛选', // 头部的toolTip，必须填写，但是不用
     tooltipComponent: 'customTooltip', // 设置过滤器组件
@@ -54,9 +46,10 @@ export const GRID_OPTIONS: GridOptions = {
     resizable: true, // 允许调整列大小，就是拖动改变列大小
     // lockPosition: true,  //列位置为true代表不能拖动列
     minWidth: 100, // 列最小宽度
-    filter: true, // 开启数据刷选器，就是在列头上增加数据搜索过滤功能
-  },
+    filter: true // 开启数据刷选器，就是在列头上增加数据搜索过滤功能
+  }
 }
+
 // 侧边栏配置
 export const SIDEBAR_CONFIGURATION: SideBarDef = {
   toolPanels: [
@@ -68,26 +61,27 @@ export const SIDEBAR_CONFIGURATION: SideBarDef = {
       toolPanel: 'agColumnsToolPanel',
       minWidth: 225,
       width: 225,
-      maxWidth: 225,
-    },
+      maxWidth: 225
+    }
   ],
   position: 'right', // 侧边栏在表格右侧显示
-  defaultToolPanel: null, // 默认收起侧边栏(指定为null找不到首先展示的)
+  defaultToolPanel: null // 默认收起侧边栏(指定为null找不到首先展示的)
 }
+
 // 表格导出样式
 export const EXCELSTYLES: ExcelStyle[] = [
   {
     id: 'oddBackcolor',
     interior: {
       color: '#ddebf7',
-      pattern: 'Solid',
+      pattern: 'Solid'
     },
     // 边框
     borders: {
       color: '#ccc',
       lineStyle: 'Continuous',
-      weight: 1,
-    },
+      weight: 1
+    }
   },
   {
     // 必填 样式的ID，该id是唯一的字符串
@@ -96,105 +90,63 @@ export const EXCELSTYLES: ExcelStyle[] = [
     font: {
       color: 'block',
       size: 11,
-      bold: true,
+      bold: true
     },
     alignment: {
       horizontal: 'Left', // 水平
-      vertical: 'Center', // 垂直
+      vertical: 'Center' // 垂直
     },
     // 边框
     borders: {
       borderBottom: {
         color: '#C0C0C0',
         lineStyle: 'Continuous',
-        weight: 1,
+        weight: 1
       },
       borderLeft: {
         color: '#C0C0C0',
         lineStyle: 'Continuous',
-        weight: 1,
+        weight: 1
       },
       borderRight: {
         color: '#C0C0C0',
         lineStyle: 'Continuous',
-        weight: 1,
+        weight: 1
       },
       borderTop: {
         color: '#C0C0C0',
         lineStyle: 'Continuous',
-        weight: 1,
-      },
+        weight: 1
+      }
     },
     // 背景颜色和图案
     interior: {
       color: '#cdebf9',
       pattern: 'Solid',
-      patternColor: '#C0C0C0',
-    },
+      patternColor: '#C0C0C0'
+    }
   },
   {
     id: 'cell',
     alignment: {
       horizontal: 'Left', // 水平
       vertical: 'Top', // 垂直
-      wrapText: true, // 文字超出换行
-    },
+      wrapText: true // 文字超出换行
+    }
   },
   {
     id: 'headerGroup',
     alignment: {
       horizontal: 'Center', // 水平
       vertical: 'Center', // 垂直
-      wrapText: true, // 文字超出换行
-    },
+      wrapText: true // 文字超出换行
+    }
   },
   {
     id: 'hyperlinks', // 链接样式
     font: {
       underline: 'Single',
-      color: '#358ccb',
-    },
-  },
+      color: '#358ccb'
+    }
+  }
 ]
-
-interface CheckAllColumns {
-  isExportExcel: boolean
-  checkboxSelection: boolean
-  headerCheckboxSelection: boolean
-  maxWidth: number
-  pinned: ColumnPinnedType
-  menuTabs: ColumnMenuTab
-}
-
-// 全选列
-export const CHECK_ALL_COLUMNS: CheckAllColumns = {
-  isExportExcel: true,
-  maxWidth: 70,
-  menuTabs: [],
-  checkboxSelection: true,
-  headerCheckboxSelection: true,
-  pinned: 'left',
-}
-
-interface IndexColumns {
-  isExportExcel: boolean
-  headerName: string
-  colId: string
-  valueGetter: (params: ValueGetterParams) => number
-  comparator: (valueA: number, valueB: number) => number
-  maxWidth: number
-  pinned: ColumnPinnedType
-  menuTabs: Array<ColumnMenuTab>
-}
-
-// 索引列
-export const INDEX_COLUMNS: IndexColumns = {
-  isExportExcel: true,
-  headerName: '序号',
-  colId: 'rowNum',
-  valueGetter: (params) => Number(params.node.rowIndex) + 1,
-  comparator: (valueA, valueB) => valueA - valueB,
-  maxWidth: 50,
-  pinned: 'left',
-  menuTabs: [],
-}

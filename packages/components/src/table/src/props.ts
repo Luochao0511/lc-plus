@@ -1,7 +1,7 @@
-import {Column, Context, GridOptions} from 'ag-grid-community'
-import {ExcelStyle} from 'ag-grid-enterprise'
+import { Column, Context, GridOptions } from 'ag-grid-community'
+import { ExcelStyle } from 'ag-grid-enterprise'
 
-interface Toolbar {
+export interface Toolbar {
   show: boolean;
   loading: boolean;
   callback: () => void;
@@ -9,8 +9,8 @@ interface Toolbar {
   disabled: boolean;
 }
 
-interface Pagination {
-  pageSizes: Array<number>,
+export interface Pagination {
+  pageSizes: number[],
   layout: string,
   total: number,
   current: number,
@@ -18,7 +18,7 @@ interface Pagination {
   background: boolean
 }
 
-export type PropsType = {
+export interface PropsType {
   // table数据
   tableData: []
   // 整体表格配置
@@ -34,7 +34,7 @@ export type PropsType = {
   // 分页
   pagination: Pagination,
   // 可以传入button按钮，显示在表格头部右侧
-  toolbar: Array<Toolbar>,
+  toolbar: Toolbar[],
   // context可以实现表格组件和列组件进行v-model通信
   context: Context,
   // 表格侧边栏显示隐藏
@@ -48,7 +48,7 @@ export type PropsType = {
   // 是否添加单元格边框线
   cellBorders: boolean,
   // 表格导出合并样式
-  excelStyles: Array<ExcelStyle>
+  excelStyles: ExcelStyle[]
 }
 
 export const definePropsParams = {

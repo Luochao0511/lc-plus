@@ -21,10 +21,6 @@ export const sidebar = {
         {
           text: '快速上手',
           link: '/guide/started'
-        },
-        {
-          text: '开发攻略',
-          link: '/guide/go'
         }
       ]
     },
