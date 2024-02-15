@@ -49,6 +49,7 @@
   "license": "MIT",
   "devDependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@types/gulp": "^4.0.16",
     "@types/gulp-autoprefixer": "^0.0.36",
