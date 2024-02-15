@@ -4,6 +4,10 @@ import '../style/index.scss'
 
 export * from './components'
 
+// 引入常用变量
+export * from './constants/base.ts'
+
+
 const install = (app: App) => {
   for (let n in components) {
     app.use((components as any)[n])

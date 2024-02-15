@@ -1,4 +1,3 @@
-/** @vite-ignore */
 import { ColumnPinnedType } from 'ag-grid-community/dist/lib/entities/column'
 import { ColumnMenuTab, ValueGetterParams } from 'ag-grid-enterprise'
 
@@ -42,10 +41,4 @@ export const INDEX_COLUMNS: IndexColumns = {
   maxWidth: 50,
   pinned: 'left',
   menuTabs: []
-}
-
-
-module.exports = {
-  CHECK_ALL_COLUMNS,
-  INDEX_COLUMNS
 }

@@ -20,6 +20,7 @@
     "./dist/lib/index.js": "./dist/lib/index.js",
     "./dist/es/index.js": "./dist/es/index.js",
     "./dist/lib/index.d.ts": "./dist/lib/index.d.ts",
+    "./constants/base.js": "./dist/es/constants/base.js",
     "./index.css": "./dist/es/style.css"
   },
   "scripts": {
