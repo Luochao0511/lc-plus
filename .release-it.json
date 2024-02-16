@@ -1,7 +1,6 @@
 {
-  "increment": true,
   "github": {
-    "release": false
+    "release": true
   },
   "git": {
     "tagName": "docs@v${version}"
