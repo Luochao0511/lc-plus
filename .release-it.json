@@ -21,13 +21,11 @@
     "@release-it/bumper": {
       "in": {
         "file": "package.json",
-        "type": "text/plain",
-        "consumeWholeFile": true
+        "type": "text/plain"
       },
       "out": {
         "file": "package.json",
-        "type": "text/plain",
-        "consumeWholeFile": true
+        "type": "text/plain"
       }
     }
   }
