@@ -10,7 +10,7 @@
   },
   "hooks": {
     "after:bump": "echo 更新版本成功",
-    "after:release": "echo ${version} > VERSION"
+    "after:release": "cd .stage && npm version ${version} && cd -"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
