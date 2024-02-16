@@ -10,7 +10,8 @@
     "publish": true
   },
   "hooks": {
-    "after:bump": "echo 更新版本成功"
+    "after:bump": "echo 更新版本成功",
+    "after:release": "echo ${version} > VERSION"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
