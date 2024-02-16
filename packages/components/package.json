@@ -1,6 +1,7 @@
 {
   "name": "@lc-plus/components",
   "type": "module",
+  "version": "0.0.5",
   "scripts": {
     "build": "vite build"
   },
