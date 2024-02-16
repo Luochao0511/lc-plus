@@ -9,7 +9,8 @@
     "publish": true
   },
   "hooks": {
-    "after:bump": "echo 更新版本成功，开心"
+    "after:bump": "echo 更新版本成功",
+    "after:release": "npm publish"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
