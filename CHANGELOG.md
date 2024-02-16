@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.8](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.7...docs@v0.0.8) (2024-02-16)
+
+
+### Features
+
+* 终极提示release-it ([6a33f7a](https://github.com/Luochao0511/lc-plus/commit/6a33f7aabc152e540453073503487da3e9e3210d))
+
 ## [0.0.7](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.6...docs@v0.0.7) (2024-02-16)
 
 
