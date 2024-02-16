@@ -17,16 +17,6 @@
       "header": "# Changelog",
       "infile": "CHANGELOG.md",
       "ignoreRecommendedBump": "true"
-    },
-    "@release-it/bumper": {
-      "in": {
-        "file": "package.json",
-        "type": "text/plain"
-      },
-      "out": {
-        "file": "package.json",
-        "type": "text/plain"
-      }
     }
   }
 }
