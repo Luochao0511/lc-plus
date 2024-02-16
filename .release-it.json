@@ -18,8 +18,14 @@
       "infile": "CHANGELOG.md"
     },
     "@release-it/bumper": {
-      "in": "package.json",
-      "out": "package.json"
+      "in": {
+        "file": "package.json",
+        "type": "text/plain"
+      },
+      "out": {
+        "file": "package.json",
+        "type": "text/plain"
+      }
     }
   }
 }
