@@ -1,7 +1,7 @@
 {
   "increment": true,
   "github": {
-    "release": true
+    "release": false
   },
   "git": {
     "tagName": "docs@v${version}"
@@ -15,7 +15,9 @@
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": "angular",
-      "infile": "CHANGELOG.md"
+      "header": "# Changelog",
+      "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump": "true"
     },
     "@release-it/bumper": {
       "in": {
