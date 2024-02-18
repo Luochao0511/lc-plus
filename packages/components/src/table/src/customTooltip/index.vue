@@ -1,7 +1,7 @@
 <template>
   <div class="custom-tooltip">
     <div v-if="showHeaderTooltip">{{ tooltipValue }}</div>
-    <div v-else class="value" v-html="params.value" />
+    <div v-else class="value" v-html="cellValue" />
   </div>
 </template>
 
@@ -11,15 +11,25 @@ import { computed, defineProps } from 'vue'
 const props = defineProps({
   params: {
     type: Object,
-    default: () => ({}),
-  },
+    default: () => ({})
+  }
 })
 const showHeaderTooltip = computed(() => {
   return props.params.location === 'header'
 })
+
+// 单元格值
+const cellValue = computed(() => {
+  if (props.params.valueFormatted === null || typeof props.params.valueFormatted === 'undefined') {
+    return props.params.value
+  } else {
+    return props.params.valueFormatted
+  }
+})
+
 const tooltipValue = computed(() => {
   const convertName = {
-    undefined: '全选/清除',
+    undefined: '全选/清除'
   }
   const headerName = props.params.colDef.headerName
   return convertName[headerName] || `根据"${headerName}"排序`

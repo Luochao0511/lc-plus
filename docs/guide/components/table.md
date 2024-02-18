@@ -48,6 +48,144 @@ table/rowClass
 table/pinned
 :::
 
+## 单元格样式（值格式化内容）
+
+* **cellStyle** 他是css的对象或函数，返回特定单元格的 css 值对象。
+::: details 点击我查看详情
+
+```ts
+cellStyle: CellStyle | CellStyleFunc<TData, TValue>;
+
+interface CellStyle {
+  [cssProperty: string]: string | number;
+}
+
+interface CellStyleFunc<TData = any, TValue = any> {
+  (cellClassParams: CellClassParams<TData, TValue>): CellStyle | null | undefined
+}
+
+interface CellClassParams<TData = any, TValue = any> {
+  // Column for this callback 
+  column: Column<TValue>;
+  // The colDef associated with the column for this cell 
+  colDef: ColDef<TData, TValue>;
+  // The value to be rendered 
+  value: TValue | null | undefined;
+  // The data associated with this row from rowData. Data is `undefined` for row groups.
+  data: TData | undefined;
+  // The RowNode associated with this row 
+  node: IRowNode<TData>;
+  // The index of the row 
+  rowIndex: number;
+  // The grid api. 
+  api: GridApi<TData>;
+  // Application context as set on `gridOptions.context`. 
+  context: TContext;
+}
+```
+
+:::
+
+* **cellClass** 他是用于单元格的类。可以是字符串、字符串数组或返回字符串或字符串数组的函数。
+::: details 点击我查看详情
+
+```ts
+cellClass: string | string[] | CellClassFunc<TData, TValue>
+
+interface CellClassFunc<TData = any, TValue = any> {
+  (cellClassParams: CellClassParams<TData, TValue>): string | string[] | null | undefined
+}
+
+interface CellClassParams<TData = any, TValue = any> {
+  // Column for this callback 
+  column: Column<TValue>;
+  // The colDef associated with the column for this cell 
+  colDef: ColDef<TData, TValue>;
+  // The value to be rendered 
+  value: TValue | null | undefined;
+  // The data associated with this row from rowData. Data is `undefined` for row groups.
+  data: TData | undefined;
+  // The RowNode associated with this row 
+  node: IRowNode<TData>;
+  // The index of the row 
+  rowIndex: number;
+  // The grid api. 
+  api: GridApi<TData>;
+  // Application context as set on `gridOptions.context`. 
+  context: TContext;
+}
+```
+
+:::
+
+* **valueFormatter**它是一个列配置的属性用于值格式化，但是无法格式化筛选列表的值，还是展示的是原始值
+::: details 点击我查看详情
+
+```ts
+valueFormatter: string | ValueFormatterFunc<TData, TValue>
+
+interface ValueFormatterFunc<TData = any, TValue = any> {
+  (params: ValueFormatterParams<TData, TValue>): string
+}
+
+interface ValueFormatterParams<TData = any, TValue = any> {
+  // Value for the cell. 
+  value: TValue | null | undefined;
+  // Row node for the given row 
+  node: IRowNode<TData> | null;
+  // Data associated with the node 
+  data: TData | undefined;
+  // Column for this callback 
+  column: Column<TValue>;
+  // ColDef provided for this column 
+  colDef: ColDef<TData, TValue>;
+  // The grid api. 
+  api: GridApi<TData>;
+  // Application context as set on `gridOptions.context`. 
+  context: any;
+}
+```
+
+:::
+
+* **valueGetter** 它是一个列配置的属性用于值格式化，可以格式化筛选列表却无法格式化单元格提示框
+::: details 点击我查看详情
+
+```ts
+valueGetter: string | ValueGetterFunc<TData, TValue>;
+
+interface ValueGetterFunc<TData = any, TValue = any> {
+  (params: ValueGetterParams<TData, TValue>): TValue | null | undefined
+}
+
+interface ValueGetterParams<TData = any, TValue = any> {
+  // A utility method for getting other column values
+  getValue: (field: string) => any;
+  // Row node for the given row
+  node: IRowNode<TData> | null;
+  // Data associated with the node
+  data: TData | undefined;
+  // Column for this callback
+  column: Column<TValue>;
+  // ColDef provided for this column
+  colDef: ColDef<TData, TValue>;
+  // The grid api.
+  api: GridApi<TData>;
+  // Application context as set on `gridOptions.context`.
+  context: any;
+}
+```
+
+:::
+
+* **tooltipField** 它是一个列配置的属性用于展示单元格提示tooltip
+
+> 工作过程中建议使用valueGetter进行格式化。
+
+:::demo
+table/cellStyle
+:::
+
 ## 2、配置参数（Table Attributes）
 
 | 参数           | 说明                                | 类型                      | 默认值        |
