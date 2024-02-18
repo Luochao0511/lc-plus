@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.8...docs@v0.0.9) (2024-02-18)
+
+
+### Features
+
+* 单元格样式（值格式化内容） ([682aaa0](https://github.com/Luochao0511/lc-plus/commit/682aaa008b1be89bf8c5eb78cd6841c6d9eaa693))
+
 ## [0.0.8](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.7...docs@v0.0.8) (2024-02-16)
 
 
