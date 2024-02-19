@@ -186,6 +186,33 @@ interface ValueGetterParams<TData = any, TValue = any> {
 table/cellStyle
 :::
 
+## 自定义单元格
+
+* **cellRenderer** 配合**cellRendererParams**使用自定义单元格
+* **cellRendererSelector**自定义单元格，两种方式
+* 组件内部提供自定义button组件 [TypeButton]( #_6、typebutton组件props) 组件 
+
+::: details 点击我查看详情
+```ts 
+cellRendererSelector: CellRendererSelectorFunc<TData, TValue>;
+
+interface CellRendererSelectorFunc<TData = any, TValue = any> {
+    (params: ICellRendererParams<TData, TValue>) : CellRendererSelectorResult | undefined
+}
+
+interface CellRendererSelectorResult { 
+  // Equivalent of setting `colDef.cellRenderer` 
+  component?: any;
+  // Equivalent of setting `colDef.cellRendererParams` 
+  params?: any;
+}
+```
+:::
+
+:::demo
+table/cellRender 
+:::
+
 ## 2、配置参数（Table Attributes）
 
 | 参数           | 说明                                | 类型                      | 默认值        |
@@ -227,4 +254,22 @@ table/cellStyle
 |:-------|:---------|:---|
 | header | 表格表头左侧插槽 | -  |
 
+
+## 6、TypeButton组件props
+
+| 参数           | 说明                                | 类型                      | 默认值        |
+|:-------------|:----------------------------------|:------------------------|:-----------|
+| paramsClass  | 行class                            | Object/string            | -        |
+| paramsStyle  | 行style                            | Object                  | {}         |
+| toolbar      | button按钮数组                        | Array                   | []         |
+
+## 7、TypeButton组件（toolbar参数）
+
+| 参数           | 说明               | 类型                  | 默认值   |
+|:-------------|:-----------------|:--------------------|:------|
+| className  | button按钮某一项class | Object/string       | -     |
+| style  | button按钮某一项style | Object/string       | {}    |
+| callback      | button按钮点击事件     | function            | -     |
+| icon      | 是否显示icon图标       | boolean             | false |
+| iconClass      | icon图标class      | Object/string/Array | -     |
 
