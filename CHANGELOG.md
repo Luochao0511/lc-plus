@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.9...docs@v0.0.10) (2024-02-19)
+
+
+### Features
+
+* 自定义单元格 ([9f1966b](https://github.com/Luochao0511/lc-plus/commit/9f1966b812dcffb4af4aa3c1925c30c14b9bb5bb))
+
 ## [0.0.9](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.8...docs@v0.0.9) (2024-02-18)
 
 
