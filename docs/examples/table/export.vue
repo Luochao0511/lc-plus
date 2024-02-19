@@ -1,54 +1,32 @@
 <template>
   <div>
-    <lc-table :height="550" :columns="columns" :tableData="tableData" />
+    <lc-table ref="tableRef" :height="550" :columns="columns" :tableData="tableData" :toolbar="toolbar" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { LcTable } from 'lc-plus'
-
-const SEX_TYPE = {
-  1: '男',
-  2: '女'
-}
-
-const SEX_COLOR = {
-  1: 'red',
-  2: 'cyan'
-}
-
-const CATEGORY_TYPE = {
-  1: '猫',
-  2: '老鼠',
-  3: '鸭子',
-  4: '猪'
-}
+import { ref } from 'vue' //从组件库暴露的常量
 
 const columns = [
   { headerName: '姓名', field: 'name', tooltipField: 'name' },
   { headerName: '年龄', field: 'age', tooltipField: 'age' },
-  {
-    headerName: '性别', field: 'sex', tooltipField: 'sex', valueFormatter: (params) => {
-      return SEX_TYPE[params.value] || params.value
-    },
-    cellStyle: params => {
-      return {
-        color: SEX_COLOR[params.value]
-      }
-    }
-  },
   { headerName: '时间', field: 'date', tooltipField: 'date' },
-  { headerName: '住址', field: 'address', tooltipField: 'address' },
-  {
-    headerName: '类别', field: 'category', tooltipField: 'category',
-    valueGetter: (params) => {
-      return CATEGORY_TYPE[params.data.category] || params.data.category
-    },
-    cellClass: params => {
-      return params.data.category === '1' ? 'my-class-1' : 'my-class-2'
-    }
-  }
+  { headerName: '住址', field: 'address', tooltipField: 'address' }
 ]
+
+const tableRef = ref(null)
+
+const exportExcel = () => {
+  tableRef.value.exportExcel('标准模板')
+}
+
+const toolbar = [{
+  label: '导出',
+  show: true,
+  callback: exportExcel,
+  type: 'primary'
+}]
 
 const tableData = [
   {
@@ -89,11 +67,5 @@ const tableData = [
 
 
 <style scoped lang="scss">
-:deep(.my-class-1) {
-  color: #005CC5;
-}
 
-:deep(.my-class-2) {
-  color: chartreuse;
-}
 </style>

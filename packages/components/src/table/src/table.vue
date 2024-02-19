@@ -160,7 +160,7 @@ const exportExcel = (
 ) => {
   const newColumn = columnApi.value
     .getAllDisplayedColumns()
-    .filter((item) => item.userProvidedColDef?.isExportExcel === undefined) // 返回的是显示的列
+    .filter((item) => !item.userProvidedColDef?.isExportExcel) // 返回的是显示的列
   const getSelectedRows = gridApi.value.getSelectedRows().length // 获取勾选的列表长度
   gridApi.value.exportDataAsExcel({
     onlySelected: !!getSelectedRows, // 是否复选框导出

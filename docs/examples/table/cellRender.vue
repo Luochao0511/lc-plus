@@ -6,10 +6,8 @@
 
 <script setup lang="ts">
 import { LcTable } from 'lc-plus'
-import { INDEX_COLUMNS } from 'lc-plus/constants/base.js' //从组件库暴露的常量
 
 const columns = [
-  INDEX_COLUMNS,
   { headerName: '姓名', field: 'name', tooltipField: 'name' },
   { headerName: '年龄', field: 'age', tooltipField: 'age' },
   { headerName: '时间', field: 'date', tooltipField: 'date' },

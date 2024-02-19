@@ -190,15 +190,15 @@ table/cellStyle
 
 * **cellRenderer** 配合**cellRendererParams**使用自定义单元格
 * **cellRendererSelector**自定义单元格，两种方式
-* 组件内部提供自定义button组件 [TypeButton]( #_6、typebutton组件props) 组件 
+* 组件内部提供自定义button组件 [TypeButton]( #typebutton组件props) 组件 
 
 ::: details 点击我查看详情
 ```ts 
 cellRendererSelector: CellRendererSelectorFunc<TData, TValue>;
 
-interface CellRendererSelectorFunc<TData = any, TValue = any> {
+interface CellRendererSelectorFunc<TData = any, TValue = any> { 
     (params: ICellRendererParams<TData, TValue>) : CellRendererSelectorResult | undefined
-}
+} 
 
 interface CellRendererSelectorResult { 
   // Equivalent of setting `colDef.cellRenderer` 
@@ -213,7 +213,36 @@ interface CellRendererSelectorResult {
 table/cellRender 
 :::
 
-## 2、配置参数（Table Attributes）
+## 导出
+
+* table组件内置excel导出，导出内容所见即所得，需要使用[exportExcel](#methods-方法)函数进行导出
+* 本次需要用到组件props方法**toolbar**字段
+
+:::demo
+table/export
+:::
+
+
+## 自定义索引
+
+* table组件内置索引列常量，直接写入`import { INDEX_COLUMNS } from 'lc-plus/constants/base.js`就可以使用
+
+:::demo
+table/rowIndex
+:::
+
+## 多选
+
+* table组件内置多选列常量，直接写入`import { CHECK_ALL_COLUMNS } from 'lc-plus/constants/base.js'`就可以使用
+
+:::demo
+table/selected
+:::
+
+
+
+
+## 配置参数（Table Attributes）
 
 | 参数           | 说明                                | 类型                      | 默认值        |
 |:-------------|:----------------------------------|:------------------------|:-----------|
@@ -233,14 +262,14 @@ table/cellRender
 | cellBorders  | 是否添加单元格边框线                        | boolean                 | false      |
 | excelStyles  | 表格导出合并样式                          | Array                   | -          |
 
-## 3、events 其他事件按照 el-table
+## events 其他事件按照 el-table
 
 | 事件名            | 说明      | 返回值       |
 |:---------------|:--------|:----------|
 | current-change | 当前页码    | 当前选中的页码   |
 | size-change    | 当前一页多少行 | 当前选择的size |
 
-## 4、Methods 方法
+## Methods 方法
 
 | 事件名         | 说明            | 参数                                      |
 |:------------|:--------------|:----------------------------------------|
@@ -248,14 +277,14 @@ table/cellRender
 | columnApi   | 表格的所有列api集合对象 | —                                       |
 | exportExcel | 表格导出，支持所见即所得  | excelName为导出文件名称，configuration为配置，是一个对象 |
 
-## 5、Slots插槽
+## Slots插槽
 
 | 插槽名    | 说明       | 参数 |
 |:-------|:---------|:---|
 | header | 表格表头左侧插槽 | -  |
 
 
-## 6、TypeButton组件props
+## TypeButton组件props
 
 | 参数           | 说明                                | 类型                      | 默认值        |
 |:-------------|:----------------------------------|:------------------------|:-----------|
@@ -263,7 +292,7 @@ table/cellRender
 | paramsStyle  | 行style                            | Object                  | {}         |
 | toolbar      | button按钮数组                        | Array                   | []         |
 
-## 7、TypeButton组件（toolbar参数）
+## TypeButton组件（toolbar参数）
 
 | 参数           | 说明               | 类型                  | 默认值   |
 |:-------------|:-----------------|:--------------------|:------|
