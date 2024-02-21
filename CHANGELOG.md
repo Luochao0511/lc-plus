@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.10...docs@v0.0.11) (2024-02-21)
+
+
+### Features
+
+* 添加多选，索引，导出的代码案例 ([f132733](https://github.com/Luochao0511/lc-plus/commit/f1327330413111599300108eda6d7bc3b6507935))
+
 ## [0.0.10](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.9...docs@v0.0.10) (2024-02-19)
 
 
