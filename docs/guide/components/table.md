@@ -239,6 +239,22 @@ table/rowIndex
 table/selected
 :::
 
+### 表头插槽
+
+该组件内置表格插槽`header`，插槽主要是显示在左侧，使用如下
+
+:::demo
+table/header
+:::
+
+### 表格分页
+
+table组件内置表格分页,
+
+:::demo
+table/paging
+:::
+
 
 
 

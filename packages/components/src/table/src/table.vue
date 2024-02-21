@@ -232,3 +232,27 @@ onBeforeUnmount(() => {
 // 导出表格api 在父组件中可以通过ref的获取表格实例来获取表格方法 gridTable.value.gridApi就可以获取到实例方法
 defineExpose({ gridApi, columnApi, gridTable, exportExcel }) // 注意这里的ref对象不需要.value导出，vue会自动解构，如果加了值就会为null
 </script>
+
+<style lang="scss" scoped>
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mb10{
+  margin-bottom: 10px;
+}
+</style>
