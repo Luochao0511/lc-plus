@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.13](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.11...docs@v0.0.13) (2024-02-22)
+
+
+### Features
+
+* 添加表格分页和表格插槽 ([04467af](https://github.com/Luochao0511/lc-plus/commit/04467afe7875adf9b3f5f36f1793a99f0b5efc67))
+
 ## [0.0.12](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.11...docs@v0.0.12) (2024-02-21)
 
 
