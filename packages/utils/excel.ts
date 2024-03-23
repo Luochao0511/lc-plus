@@ -1,6 +1,5 @@
 import ExcelJS from 'exceljs'
-import { saveAs } from 'file-saver'
-import { Cell, Row, Worksheet } from 'exceljs/index'
+import FileSaver from 'file-saver'
 
 interface IColumn {
   headerName: string;
@@ -64,7 +63,7 @@ export const createWsSheet = <T, D>(
   }
 
   workbook.xlsx.writeBuffer().then((res) => {
-    saveAs(new Blob([res], { type: 'application/octet-stream' }), filename)
+    FileSaver.saveAs(new Blob([res], { type: 'application/octet-stream' }), filename)
   })
 }
 
@@ -77,7 +76,7 @@ const isNull = (data: any): boolean => {
  *
  * @param str {string} 水印名字
  */
-export function setWatermark(str: string):string {
+export function setWatermark(str: string): string {
   let id = '1.23452384164.123412416'
 
   if (document.getElementById(id) !== null) {
@@ -100,16 +99,16 @@ export function setWatermark(str: string):string {
 
 /**
  * 该方法获取开始单元格和结束单元格用于自动筛选的参数
- * @param worksheet {Worksheet} 获取sheet页
+ * @param worksheet  获取sheet页
  */
-export function calculateAutoFilterRange(worksheet: Worksheet) {
+export function calculateAutoFilterRange(worksheet: ExcelJS.Worksheet): string | null {
 
   let firstCellAddress: string | null = null
   let lastCellAddress: string | null = null
 
   // 遍历所有行和列
-  worksheet.eachRow({ includeEmpty: true }, function(row: Row) {
-    row.eachCell({ includeEmpty: true }, function(cell: Cell) {
+  worksheet.eachRow({ includeEmpty: true }, function(row: ExcelJS.Row) {
+    row.eachCell({ includeEmpty: true }, function(cell: ExcelJS.Cell) {
       const cellAddress = cell.address
       if (!firstCellAddress) {
         firstCellAddress = cellAddress
@@ -136,26 +135,26 @@ export const agWatermarkExcel = (blob: Blob, fileName: string, staff: string) =>
   // 当文件读取完成时执行回调函数
   reader.onload = function(event) {
     // 获取 Blob 对象的数据
-    const arrayBuffer = event.target.result
+    const arrayBuffer: string | ArrayBuffer | null | undefined = event.target?.result
 
     // 创建一个 ExcelJS 的工作簿对象
     const workbook = new ExcelJS.Workbook()
 
     // 读取 ArrayBuffer 数据
-    workbook.xlsx.load(arrayBuffer).then(function() {
+    workbook.xlsx.load(arrayBuffer as ArrayBuffer).then(function() {
       // 添加水印
       const base64 = setWatermark(staff)
 
       const imageId = workbook.addImage({ base64, extension: 'png' })
 
       // 遍历sheet
-      workbook.eachSheet((worksheet: Worksheet): void => {
+      workbook.eachSheet((worksheet: ExcelJS.Worksheet): void => {
 
         // 给每个sheet添加上水印
         worksheet.addBackgroundImage(imageId)
 
         // 给每列加上筛选
-        worksheet.autoFilter = calculateAutoFilterRange(worksheet)
+        worksheet.autoFilter = calculateAutoFilterRange(worksheet) as string
 
         // 冻结首行
         worksheet.views = [
@@ -164,11 +163,11 @@ export const agWatermarkExcel = (blob: Blob, fileName: string, staff: string) =>
       })
 
       // 将修改后的 Workbook 转换为 Blob 对象
-      workbook.xlsx.writeBuffer().then((buffer: Buffer) => {
+      workbook.xlsx.writeBuffer().then((buffer: ExcelJS.Buffer) => {
         const newBlob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
 
         // 提供给用户下载
-        saveAs(newBlob, `${fileName}.xlsx`)
+        FileSaver.saveAs(newBlob, `${fileName}.xlsx`)
       })
     })
   }
