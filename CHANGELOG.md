@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.16](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.15...docs@v0.0.16) (2024-03-23)
+
+
+### Bug Fixes
+
+* 修改打包的时候file-saver读取不出来 ([059bcb6](https://github.com/Luochao0511/lc-plus/commit/059bcb6230ab14615ce09c4eb7083330df17cb7b))
+
 ## [0.0.15](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.13...docs@v0.0.15) (2024-03-23)
 
 
