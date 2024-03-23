@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.15](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.13...docs@v0.0.15) (2024-03-23)
+
+
+### Features
+
+* 表格excel导出添加水印添加列筛选，添加冻结首行 ([daa7b7d](https://github.com/Luochao0511/lc-plus/commit/daa7b7d7592014a5e3be89c87818125a3a40e3c3))
+
 ## [0.0.14](https://github.com/Luochao0511/lc-plus/compare/docs@v0.0.13...docs@v0.0.14) (2024-03-23)
 
 
