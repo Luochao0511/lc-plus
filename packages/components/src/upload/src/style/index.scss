@@ -1,0 +1,55 @@
+
+// 渐进
+@keyframes FADE-IN {
+  0% {
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// 旋转进
+@keyframes ROTATE-Z-IN {
+  0% {
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+    transform: rotateZ(-20deg) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotateZ(0deg) scale(1);
+  }
+}
+
+//移出动画
+@keyframes  FADEOUT_UP_BIG {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+  }
+}
+
+
+// 文本裁剪
+@mixin TEXT-CLAMP($line) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+$COLOR-INFO: #38b2ea;

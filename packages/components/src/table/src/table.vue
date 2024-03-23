@@ -101,12 +101,15 @@ import {
 import toDateString from 'xe-utils/toDateString'
 import debounce from 'xe-utils/debounce'
 import { PropsType, definePropsParams } from './props.ts'
+import { agWatermarkExcel } from '../../../../utils/excel.ts'
 // 以下代码是破解的api必须要加
 LicenseManager.prototype.validateLicense = () => true
 LicenseManager.prototype.isDisplayWatermark = () => true
 LicenseManager.prototype.getWatermarkMessage = () => 'true'
+
 // 父传子
 const props = withDefaults(defineProps<PropsType>(), definePropsParams)
+
 // 监听tableData数据进行自适应列宽
 watch(
   () => props.tableData,
@@ -116,10 +119,13 @@ watch(
     })
   }
 )
+
 // 子传父事件
 const emit = defineEmits(['size-change', 'current-change'])
+
 // 默认合并option配置使用计算属性
 const mergedOptions = computed(() => ({ ...GRID_OPTIONS, ...props.options }))
+
 // 默认合并分页器配置使用计算属性
 const mergedPagination = computed(() => ({
   pageSizes: [15, 30, 40, 50],
@@ -130,6 +136,7 @@ const mergedPagination = computed(() => ({
   background: true,
   ...props.pagination
 }))
+
 // 改写表格高度
 const rewriteHeight = computed(() => {
   if (typeof props.height === 'number') {
@@ -138,46 +145,82 @@ const rewriteHeight = computed(() => {
     return props.height
   }
 })
+
 // 设置侧边栏配置
 const rewriteSideBar = computed(() =>
   props.showSideBar ? SIDEBAR_CONFIGURATION : false
 )
+
 // 合并表格导出样式
 const tableExcelStyles = computed(() => [...EXCELSTYLES, ...props.excelStyles])
+
+// 表格的api
+const gridApi: GridApi = ref(null)
+
+// 列的api
+const columnApi: ColumnApi = ref(null)
+
+// 表格的实例对象
+const gridTable = ref(null)
+
 // ag-grid创建完成之后执行的事件,注意：此函数会在onMounted生命周期之后调用
-const gridApi: GridApi = ref(null) // 表格的api
-const columnApi: ColumnApi = ref(null) // 列的api
-const gridTable = ref(null) // 表格的实例对象
 const onGridReady = (params: GridReadyEvent) => {
   gridApi.value = params.api
   columnApi.value = params.columnApi
   gridApi.value.sizeColumnsToFit() // 这时就可以通过gridApi调用ag-grid的传统方法了
 }
+
 // Excel文件导出函数，使用方法，会导出到组件实例之上，通过ref直接调用即可,configuration传递个性化配置，要求传对象
 const exportExcel = (
   excelName: string,
   configuration: ExcelExportParams = {}
 ) => {
-  const newColumn = columnApi.value
-    .getAllDisplayedColumns()
-    .filter((item) => !item.userProvidedColDef?.isExportExcel) // 返回的是显示的列
-  const getSelectedRows = gridApi.value.getSelectedRows().length // 获取勾选的列表长度
-  gridApi.value.exportDataAsExcel({
+  // 获取所有显示的列
+  const allColumns = columnApi.value.getAllDisplayedColumns()
+
+  // 获取没有被禁用的列
+  const showColumns = allColumns.filter((item) => !(item.userProvidedColDef && item.userProvidedColDef.isExportExcel))
+
+  // 获取勾选的列表长度
+  const getSelectedRows = gridApi.value.getSelectedRows().length
+
+  // 添加导出表格名称
+  const fileName = `${excelName}-${toDateString(new Date(), 'yyyyMMdd')}`
+
+  // 导出表格的配置
+  const exportParams = {
+    fileName, // 文件名
     onlySelected: !!getSelectedRows, // 是否复选框导出
     autoConvertFormulas: true, // 把公式变为结果
-    fileName: `${excelName}-${toDateString(new Date(), 'yyyyMMdd')}`, // 文件名
     sheetName: 'Sheet1', // 页脚名字
     rowHeight: 33, // 所有行的高度
     headerRowHeight: 40, // 表头行高度
-    columnKeys: newColumn, // 导出列数组
+    columnKeys: showColumns, // 导出列数组
     ...configuration
-  })
+  }
+
+  // 有水印名称那就导出水印
+  if (configuration.waterMarkName) {
+    const blob = gridApi.value.getDataAsExcel(exportParams) //获取blob对象
+    // 导出文件
+    agWatermarkExcel(blob, fileName, configuration.waterMarkName)
+  } else {
+    gridApi.value.exportDataAsExcel({
+      exportParams,
+      exportAsExcelTable: {
+        showFilterButton: true, //列筛选
+        showRowStripes: false //行斑马纹
+      }
+    })
+  }
 }
+
 // 表格根据视口大小大小进行resize()
 const eleResizeListener = () => {
   if (!gridApi.value) return
   gridApi.value.sizeColumnsToFit() // 自适应表格大小改变columns宽度
 }
+
 // 分页选择器改变size大小
 const handleSizeChange = (size: number) => {
   emit('size-change', size)
@@ -188,6 +231,7 @@ const handleCurrentChange = (current: number) => {
   emit('current-change', current)
 }
 
+//打开过滤器触发函数
 const filterOpened = (params: FilterOpenedEvent) => {
   const { api, column } = params
   api.getFilterInstance(column.colId, (filterInstance: IFilter) => {
@@ -195,6 +239,7 @@ const filterOpened = (params: FilterOpenedEvent) => {
     selectedItems.cellRendererComponent.componentInstance.$root.renderLabel() // 重新渲染
   })
 }
+
 // 如果没有应用筛选，筛选器需要销毁掉，不然的话，查询全部数量就会出问题
 let timerId: NodeJS.Timeout | null = null
 const filterModified = (params: FilterModifiedEvent) => {
@@ -252,7 +297,7 @@ defineExpose({ gridApi, columnApi, gridTable, exportExcel }) // 注意这里的r
   justify-content: center;
 }
 
-.mb10{
+.mb10 {
   margin-bottom: 10px;
 }
 </style>

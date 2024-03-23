@@ -18,7 +18,9 @@ const columns = [
 const tableRef = ref(null)
 
 const exportExcel = () => {
-  tableRef.value.exportExcel('标准模板')
+  tableRef.value.exportExcel('标准模板',{
+    waterMarkName:'机密文件'
+  })
 }
 
 const toolbar = [{

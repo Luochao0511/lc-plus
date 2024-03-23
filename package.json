@@ -48,6 +48,11 @@
   "license": "MIT",
   "devDependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/vue-fontawesome": "3.0.0-5",
     "@release-it/conventional-changelog": "^8.0.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@types/gulp": "^4.0.16",
@@ -60,9 +65,9 @@
     "@vue/runtime-core": "^3.4.15",
     "@vue/shared": "^3.3.13",
     "@vueuse/core": "^10.7.2",
-    "ag-grid-community": "^31.0.3",
-    "ag-grid-enterprise": "^31.0.3",
-    "ag-grid-vue3": "^31.0.3",
+    "ag-grid-community": "^31.2.0",
+    "ag-grid-enterprise": "^31.2.0",
+    "ag-grid-vue3": "^31.2.0",
     "chalk": "^5.3.0",
     "consola": "^3.2.3",
     "dotenv": "^16.3.1",
@@ -91,5 +96,9 @@
     "vitepress": "1.0.0-rc.24",
     "vue": "^3.3.4",
     "xe-utils": "^3.5.20"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5"
   }
 }

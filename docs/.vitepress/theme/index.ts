@@ -12,6 +12,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import VcDesign from '../../../packages/components/src/index'
 import '../../../packages/components/style/index.scss'
 import { LCDemo } from '../vitepress'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
   extends: DefaultTheme, // or ...DefaultTheme
@@ -26,6 +27,7 @@ export default {
 
     app.component('Demo', LCDemo)
 
+    app.component('font-awesome-icon', FontAwesomeIcon)
     // 注册所有图标
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
       app.component(key, component)

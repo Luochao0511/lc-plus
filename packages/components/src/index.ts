@@ -1,6 +1,7 @@
 import type { App } from 'vue'
 import * as components from './components'
 import '../style/index.scss'
+import  './fontAwesome'
 
 export * from './components'
 

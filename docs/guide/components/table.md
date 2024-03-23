@@ -260,23 +260,23 @@ table/paging
 
 ## 配置参数（Table Attributes）
 
-| 参数           | 说明                                | 类型                      | 默认值        |
-|:-------------|:----------------------------------|:------------------------|:-----------|
-| tableData    | 表格数据对象                            | Array                   | []         |
-| options      | 整体表格配置                            | Object                  | {}         |
-| columns      | 表格列配置                             | Array                   | []         |
-| loading      | 表格loading效果                       | boolean                 | false      |
-| height       | 表格高度                              | number / string         | 300        |
-| isPagination | 是否显示分页器                           | boolean                 | false      |
-| pagination   | 分页配置                              | Object                  | Pagination |
-| toolbar      | 可以传入button按钮，显示在表格头部右侧            | Array                   | []         |
-| context      | context可以实现表格组件和列自定义组件进行v-model通信 | Object                  | {}         |
-| showSideBar  | 表格侧边栏显示隐藏                         | boolean                 | false      |
-| buttonClass  | 表头的button的class类名                 | string / object / Array | -          |
-| headerClass  | 表头class                           | string / object         | -          |
-| borders      | 是否添加边框线                           | boolean                 | false      |
-| cellBorders  | 是否添加单元格边框线                        | boolean                 | false      |
-| excelStyles  | 表格导出合并样式                          | Array                   | -          |
+| 参数           | 说明                                | 类型                      | 默认值                        |
+|:-------------|:----------------------------------|:------------------------|:---------------------------|
+| tableData    | 表格数据对象                            | Array                   | []                         |
+| options      | 整体表格配置                            | Object                  | {}                         |
+| columns      | 表格列配置                             | Array                   | []                         |
+| loading      | 表格loading效果                       | boolean                 | false                      |
+| height       | 表格高度                              | number / string         | 300                        |
+| isPagination | 是否显示分页器                           | boolean                 | false                      |
+| pagination   | 分页配置                              | Object                  | Pagination                 |
+| toolbar      | 可以传入button按钮，显示在表格头部右侧            | Array                   | []                         |
+| context      | context可以实现表格组件和列自定义组件进行v-model通信 | Object                  | {}                         |
+| showSideBar  | 表格侧边栏显示隐藏                         | boolean                 | false                      |
+| buttonClass  | 表头的button的class类名                 | string / object / Array | -                          |
+| headerClass  | 表头class                           | string / object         | -                          |
+| borders      | 是否添加边框线                           | boolean                 | false                      |
+| cellBorders  | 是否添加单元格边框线                        | boolean                 | [exportExcel](#methods-方法) |
+| excelStyles  | 表格导出合并样式                          | Array                   | []                         |
 
 ## events 其他事件按照 el-table
 
@@ -287,11 +287,11 @@ table/paging
 
 ## Methods 方法
 
-| 事件名         | 说明            | 参数                                      |
-|:------------|:--------------|:----------------------------------------|
-| gridApi     | 表格的所有api集合对象  | -                                       |
-| columnApi   | 表格的所有列api集合对象 | —                                       |
-| exportExcel | 表格导出，支持所见即所得  | excelName为导出文件名称，configuration为配置，是一个对象 |
+| 事件名         | 说明            | 参数                                                                            |
+|:------------|:--------------|:------------------------------------------------------------------------------|
+| gridApi     | 表格的所有api集合对象  | -                                                                             |
+| columnApi   | 表格的所有列api集合对象 | —                                                                             |
+| exportExcel | 表格导出，支持所见即所得  | excelName为导出文件名称，configuration为配置，是一个对象[configuration接口](#configuration-参数传递) |
 
 ## Slots插槽
 
@@ -302,19 +302,27 @@ table/paging
 
 ## TypeButton组件props
 
-| 参数           | 说明                                | 类型                      | 默认值        |
-|:-------------|:----------------------------------|:------------------------|:-----------|
-| paramsClass  | 行class                            | Object/string            | -        |
-| paramsStyle  | 行style                            | Object                  | {}         |
-| toolbar      | button按钮数组                        | Array                   | []         |
+| 参数          | 说明         | 类型            | 默认值 |
+|:------------|:-----------|:--------------|:----|
+| paramsClass | 行class     | Object/string | -   |
+| paramsStyle | 行style     | Object        | {}  |
+| toolbar     | button按钮数组 | Array         | []  |
 
 ## TypeButton组件（toolbar参数）
 
-| 参数           | 说明               | 类型                  | 默认值   |
-|:-------------|:-----------------|:--------------------|:------|
-| className  | button按钮某一项class | Object/string       | -     |
-| style  | button按钮某一项style | Object/string       | {}    |
+| 参数            | 说明               | 类型                  | 默认值   |
+|:--------------|:-----------------|:--------------------|:------|
+| className     | button按钮某一项class | Object/string       | -     |
+| style         | button按钮某一项style | Object/string       | {}    |
 | callback      | button按钮点击事件     | function            | -     |
-| icon      | 是否显示icon图标       | boolean             | false |
-| iconClass      | icon图标class      | Object/string/Array | -     |
+| icon          | 是否显示icon图标       | boolean             | false |
+| iconClass     | icon图标class      | Object/string/Array | -     |
 
+## configuration-参数传递
+| 参数                 | 说明                                | 类型       | 默认值                                                                 |
+|:-------------------|:----------------------------------|:---------|:--------------------------------------------------------------------|
+| waterMarkName      | 导出水印名称                            | string   | -                                                                   |
+| addImageToCell     | 用于导出相关 gridCell 的图像               | Function | -                                                                   |
+| prependContent     | 要放置在导出工作表底部的内容。                   | function | -                                                                   |
+| appendContent      | 要放置在导出工作表顶部的内容                    | boolean  | false                                                               |
+| shouldRowBeSkipped | 网格中每行都会调用一次的回调函数。返回 true 以忽略导出中的行 | Function | shouldRowBeSkipped = (params: ShouldRowBeSkippedParams) => boolean; |
